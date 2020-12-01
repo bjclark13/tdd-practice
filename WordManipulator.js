@@ -14,6 +14,19 @@ class WordManipulator {
 	 * @return reversed string
 	 */
 	reverseString(text) {
+		if (typeof text === 'number') {
+			text = text.toString();
+		}
+
+		// Split text into array of characters
+		const textArray = text.split('');
+
+		// Use array.reverse()
+		const reversed = textArray.reverse();
+
+		// Use join to combine the array back to a string
+		text = reversed.join('');
+		
 		return text;
 	}
 
@@ -25,6 +38,27 @@ class WordManipulator {
 	 * @todo Implement
 	 */
 	titleCase(text) {
+		if (typeof text !== 'string' ) {
+			return null;
+		}
+
+		const textArray = text.split(' ');
+
+		const convertedArray = textArray.map(function(word) {
+			// get first letter using charAt method
+			let firstLetter = word.charAt(0);
+
+			// converting the first letter to uppercase
+			firstLetter = firstLetter.toUpperCase();
+
+			// getting the remaining letters
+			const restOfLetters = word.substring(1);
+
+			return firstLetter + restOfLetters;
+		});
+
+		text = convertedArray.join(' ');
+	
 		return text;
 	}
 
